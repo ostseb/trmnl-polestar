@@ -6,6 +6,7 @@ Plugin för [TRMNL](https://trmnl.com) (e-pappersskärm). Batterinivå, räckvid
 
 Alla fyra layouter (full, half_horizontal, half_vertical, quadrant) finns, så den fungerar i mashups.
 Se [`preview/overview.png`](preview/overview.png).
+Testad i liggande och stående format samt på TRMNL X: [stående](preview/full.portrait.png), [TRMNL X](preview/full.x.png).
 
 ## Installera
 

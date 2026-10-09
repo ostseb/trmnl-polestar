@@ -5,3 +5,7 @@ __pycache__/
 pusher/.venv/
 pusher/polestar.env
 pusher/last_payload.json
+preview/*.x.png
+preview/*.portrait.png
+!preview/full.x.png
+!preview/full.portrait.png

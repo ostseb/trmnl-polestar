@@ -5,9 +5,9 @@
 </div>
 <div class="title_bar"><span class="title">Polestar</span></div>
 {%- else -%}
-<div class="layout layout--row layout--stretch gap--large">
+<div class="layout layout--row layout--stretch gap--large portrait:layout--col">
   {%- for car in cars limit: 2 -%}
-  <div class="flex flex--col flex--between flex--left {% if car.charging %}outline {% endif %}p--4 rounded" style="flex: 1">
+  <div class="flex flex--col flex--between flex--left {% if car.charging %}outline {% endif %}p--4 rounded grow">
     <div class="flex flex--row flex--between flex--center-y w--full">
       <span class="title title--large">{{ car.name }}</span>
       <span class="label {% if car.charging %}label--filled{% else %}label--outline{% endif %}">{{ car.status }}</span>
