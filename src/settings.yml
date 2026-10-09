@@ -13,6 +13,7 @@ static_data: ''
 custom_fields:
 - keyname: about_polestar
   field_type: author_bio
+  github_url: https://github.com/ostseb/trmnl-polestar
   name: Om pluginen
   category: personal,travel
   learn_more_url: https://github.com/pypolestar/pypolestar
@@ -23,4 +24,4 @@ custom_fields:
 
     Data skickas till pluginens webhook av ett litet Python-skript (push.py) som du kör var tionde minut på en dator eller server som alltid är på. Skriptet loggar in med ditt Polestar ID via det inofficiella biblioteket pypolestar och skickar bara när något har ändrats. Inofficiell plugin, inte gjord av eller kopplad till Polestar.
 
-    Data hämtas med det inofficiella biblioteket <a href="https://github.com/pypolestar/pypolestar" class="underline">pypolestar</a> och skickas hit av skriptet push.py.
+    Data hämtas med det inofficiella biblioteket <a href="https://github.com/pypolestar/pypolestar" class="underline">pypolestar</a> och skickas hit av skriptet <a href="https://github.com/ostseb/trmnl-polestar/tree/main/pusher" class="underline">push.py</a>.
