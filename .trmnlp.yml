@@ -1,0 +1,16 @@
+# trmnlp configuration (local only: `trmnlp push` uploads src/, not this file).
+# {{ env.VARIABLE }} interpolation is available here.
+---
+watch:
+  - .trmnlp.yml
+  - src
+
+time_zone: Europe/Stockholm
+
+# Values for the form fields in src/settings.yml, used by `trmnlp serve` previews.
+custom_fields: {}
+
+variables:
+  trmnl:
+    user:
+      locale: sv

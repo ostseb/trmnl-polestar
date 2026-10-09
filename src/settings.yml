@@ -1,0 +1,26 @@
+---
+name: Polestar – laddstatus
+description: Batteri, laddning och service
+strategy: webhook
+refresh_interval: 15
+no_screen_padding: 'no'
+dark_mode: 'no'
+static_data: ''
+# Data is pushed by pusher/push.py:
+#   {"merge_variables": {"cars": [{name, reg, soc, range_km, charging, connected, status,
+#                                  minutes_to_full, ready_at, power_kw, seen, alerts[], service_days,
+#                                  service_km, odometer_km, target_soc, target_type}], "updated": "HH:MM"}}
+custom_fields:
+- keyname: about_polestar
+  field_type: author_bio
+  name: Om pluginen
+  category: personal,travel
+  learn_more_url: https://github.com/pypolestar/pypolestar
+  description: |-
+    Visar laddstatus för en eller två Polestar-bilar på samma konto direkt på din TRMNL, så att du ser om bilen är redo innan du går ut. Fungerar med Polestar 2, 3 och 4.
+
+    För varje bil visas batterinivå i procent med en stapel, räckvidd i kilometer, om bilen laddar, är inkopplad eller står parkerad, när den är fulladdad och med vilken effekt den laddar. Har bilen ett laddmål visas det som ett streck på stapeln. Du ser också mätarställning, hur många dagar och kilometer det är kvar till nästa service, och en tydlig svart varningsruta när service behövs eller när bromsvätska, kylvätska eller olja behöver kontrolleras.
+
+    Data skickas till pluginens webhook av ett litet Python-skript (push.py) som du kör var tionde minut på en dator eller server som alltid är på. Skriptet loggar in med ditt Polestar ID via det inofficiella biblioteket pypolestar och skickar bara när något har ändrats. Inofficiell plugin, inte gjord av eller kopplad till Polestar.
+
+    Data hämtas med det inofficiella biblioteket <a href="https://github.com/pypolestar/pypolestar" class="underline">pypolestar</a> och skickas hit av skriptet push.py.

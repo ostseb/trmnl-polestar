@@ -1,0 +1,9 @@
+[Unit]
+Description=Push Polestar battery status to TRMNL
+After=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=%h/TRMNL-home-dash/plugins/polestar/pusher
+EnvironmentFile=%h/TRMNL-home-dash/plugins/polestar/pusher/polestar.env
+ExecStart=%h/TRMNL-home-dash/plugins/polestar/pusher/.venv/bin/python push.py

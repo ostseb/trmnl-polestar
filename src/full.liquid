@@ -1,0 +1,68 @@
+{%- if cars == blank or cars.size == 0 -%}
+<div class="layout layout--col layout--center gap--small">
+  <span class="title">Väntar på data från bilarna</span>
+  <span class="description text--center">Kör skriptet push.py med pluginens webhook-URL (se Om pluginen).</span>
+</div>
+<div class="title_bar"><span class="title">Polestar</span></div>
+{%- else -%}
+<div class="layout layout--row layout--stretch gap--large">
+  {%- for car in cars limit: 2 -%}
+  <div class="flex flex--col flex--between flex--left {% if car.charging %}outline {% endif %}p--4 rounded" style="flex: 1">
+    <div class="flex flex--row flex--between flex--center-y w--full">
+      <span class="title title--large">{{ car.name }}</span>
+      <span class="label {% if car.charging %}label--filled{% else %}label--outline{% endif %}">{{ car.status }}</span>
+    </div>
+    {%- if car.alerts.size > 0 -%}
+      <div class="bg--black rounded--small px--2 py--1 w--full">
+        <span class="title title--small text--white" data-clamp="1">⚠ {{ car.alerts | join: " · " }}</span>
+      </div>
+    {%- endif -%}
+    <div class="flex flex--row flex--bottom gap--small">
+      <span class="value value--xlarge value--tnums">{{ car.soc | default: "–" }}</span>
+      <span class="value value--small pb--2">%</span>
+      {%- if car.target_soc -%}<span class="description pb--3">mål {{ car.target_soc }} %{% if car.target_type %} ({{ car.target_type }}){% endif %}</span>{%- endif -%}
+    </div>
+    <div class="relative w--full">
+      <div class="progress-bar progress-bar--large w--full">
+        <div class="track"><div class="fill" style="width: {{ car.soc | default: 0 }}%"></div></div>
+      </div>
+      {%- if car.target_soc -%}
+        <div class="absolute top--0 bottom--0 w--1 bg--black" style="left: {{ car.target_soc }}%"></div>
+      {%- endif -%}
+    </div>
+    <div class="grid grid--cols-2 gap--small w--full">
+      <div class="item"><div class="content">
+        <span class="label label--small">Räckvidd</span>
+        <span class="title">{{ car.range_km | default: "–" }} km</span>
+      </div></div>
+      <div class="item"><div class="content">
+        {%- if car.charging -%}
+          <span class="label label--small">Fulladdad</span>
+          <span class="title">kl {{ car.ready_at | default: "–" }}{% if car.power_kw %} <span class="description">{{ car.power_kw }} kW</span>{% endif %}</span>
+        {%- else -%}
+          <span class="label label--small">Kabel</span>
+          <span class="title">{% if car.connected == true %}Inkopplad{% elsif car.connected == false %}Urkopplad{% else %}Okänt{% endif %}</span>
+        {%- endif -%}
+      </div></div>
+      <div class="item"><div class="content">
+        <span class="label label--small">Mätarställning</span>
+        <span class="title">{{ car.odometer_km | default: "–" }} km</span>
+      </div></div>
+      <div class="item"><div class="content">
+        <span class="label label--small">Nästa service</span>
+        {%- if car.service_days or car.service_km -%}
+          <span class="title">{% if car.service_days %}{{ car.service_days }} d{% endif %}{% if car.service_days and car.service_km %} · {% endif %}{% if car.service_km %}{{ car.service_km }} km{% endif %}</span>
+        {%- else -%}
+          <span class="title">–</span>
+        {%- endif -%}
+      </div></div>
+    </div>
+    <span class="description">Senast från bilen {{ car.seen | default: "okänt" }}</span>
+  </div>
+  {%- endfor -%}
+</div>
+<div class="title_bar">
+  <span class="title">Polestar</span>
+  <span class="instance">uppdaterat {{ updated }}</span>
+</div>
+{%- endif -%}

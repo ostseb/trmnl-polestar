@@ -1,0 +1,4 @@
+pypolestar==1.12.7
+# pypolestar's graphql module imports backoff without declaring it
+backoff==2.2.1
+httpx>=0.27

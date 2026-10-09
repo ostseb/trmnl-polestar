@@ -1,0 +1,47 @@
+{
+  "data": {
+    "updated": "22:41",
+    "cars": [
+      {
+        "name": "Polestar 2",
+        "reg": "ABC 123",
+        "soc": 64,
+        "range_km": 271,
+        "charging": true,
+        "connected": true,
+        "status": "Laddar",
+        "minutes_to_full": 145,
+        "ready_at": "01:05",
+        "power_kw": 10.8,
+        "seen": "8/10 22:38",
+        "alerts": [
+          "Snart dags för service"
+        ],
+        "service_days": 21,
+        "service_km": "1 450",
+        "odometer_km": "48 214",
+        "target_soc": null,
+        "target_type": null
+      },
+      {
+        "name": "Polestar 3",
+        "reg": "XYZ 789",
+        "soc": 38,
+        "range_km": 189,
+        "charging": false,
+        "connected": false,
+        "status": "Ej inkopplad",
+        "minutes_to_full": null,
+        "ready_at": null,
+        "power_kw": null,
+        "seen": "8/10 18:02",
+        "alerts": [],
+        "service_days": 287,
+        "service_km": "24 310",
+        "odometer_km": "6 182",
+        "target_soc": 80,
+        "target_type": "vardag"
+      }
+    ]
+  }
+}

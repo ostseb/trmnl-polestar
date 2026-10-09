@@ -1,0 +1,20 @@
+{%- if cars == blank or cars.size == 0 -%}
+<div class="layout layout--col layout--center gap--small">
+  <span class="title">Väntar på data från bilarna</span>
+  <span class="description text--center">Kör skriptet push.py med pluginens webhook-URL (se Om pluginen).</span>
+</div>
+<div class="title_bar"><span class="title">Polestar</span></div>
+{%- else -%}
+<div class="layout layout--col layout--center-y layout--stretch-x gap--medium">
+  {%- for car in cars limit: 2 -%}
+  <div class="flex flex--col flex--left gap--xsmall w--full">
+    <div class="flex flex--row flex--between flex--center-y w--full">
+      <span class="title title--small">{{ car.name }}</span>
+      <span class="title title--small value--tnums">{% if car.alerts.size > 0 %}⚠ {% endif %}{{ car.soc | default: "–" }}%{% if car.charging %} ⚡{% endif %}</span>
+    </div>
+    <div class="progress-bar progress-bar--small w--full"><div class="track"><div class="fill" style="width: {{ car.soc | default: 0 }}%"></div></div></div>
+  </div>
+  {%- endfor -%}
+</div>
+<div class="title_bar"><span class="title">Polestar</span></div>
+{%- endif -%}
